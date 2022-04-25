@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql;
+using ControleContatos.Repositorio;
 
 namespace ControleContatos
 {
@@ -24,6 +25,7 @@ namespace ControleContatos
             
                 
             services.AddDbContext<DBContext>(options=>options.UseMySql(Configuration.GetConnectionString("Default")));
+            services.AddScoped<IContatoRepositorio,ContatoRepositorio>();
             services.AddControllersWithViews();
         }
 
