@@ -12,6 +12,7 @@ namespace ControleContatos.Data
         
         public DBContext(DbContextOptions<DBContext> options): base(options){}
         public DbSet<Contato> Contato {get;set;}
+        public DbSet<Usuario> Usuario {get;set;}
        
     }
 
