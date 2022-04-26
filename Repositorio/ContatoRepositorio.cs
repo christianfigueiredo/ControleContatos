@@ -42,8 +42,15 @@ namespace ControleContatos.Repositorio
 
         }
 
-       
+        public bool Apagar(int id)
+        {
+            Contato contatoDB = ListarPorId(id);
+            if(contatoDB == null ) throw new System.Exception("Houve um erro na delecao do Registro");
+            _dbcontext.Contato.Remove(contatoDB);
+            _dbcontext.SaveChanges();
+            return true;
 
-        
+
+        }
     }
 }

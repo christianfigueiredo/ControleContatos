@@ -10,6 +10,7 @@ namespace ControleContatos.Repositorio
          Contato Adicionar(Contato contato);
 
          Contato Atualizar(Contato contato);
+         bool Apagar(int id);
          
 
     }
