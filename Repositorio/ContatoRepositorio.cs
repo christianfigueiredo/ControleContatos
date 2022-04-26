@@ -25,5 +25,10 @@ namespace ControleContatos.Repositorio
         {
            return _dbcontext.Contato.ToList();
         }
+
+        public Contato ListarPorId(int id)
+        {
+            return _dbcontext.Contato.FirstOrDefault(o=>o.Id==id);
+        }
     }
 }
