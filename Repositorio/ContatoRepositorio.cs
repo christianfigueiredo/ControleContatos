@@ -12,6 +12,14 @@ namespace ControleContatos.Repositorio
         {
             _dbcontext = dbcontext;
         }
+        public Contato ListarPorId(int id)
+        {
+            return _dbcontext.Contato.FirstOrDefault(x=>x.Id==id);
+        }
+         public List<Contato> BuscarTodos()
+        {
+           return _dbcontext.Contato.ToList();
+        }
         public Contato Adicionar(Contato contato)
         {
             //gravação no banco de dados
@@ -20,15 +28,22 @@ namespace ControleContatos.Repositorio
             return contato; 
 
         }
-
-        public List<Contato> BuscarTodos()
+        public Contato Atualizar(Contato contato)
         {
-           return _dbcontext.Contato.ToList();
+            Contato contatoDB = ListarPorId(contato.Id);
+            
+            if(contatoDB == null ) throw new System.Exception("Houve um erro na atualização do banco");
+            contatoDB.Nome = contato.Nome;
+            contatoDB.Email = contato.Email;
+            contatoDB.Celular = contato.Celular;
+            _dbcontext.Contato.Update(contatoDB);
+            _dbcontext.SaveChanges();
+            return contatoDB;
+
         }
 
-        public Contato ListarPorId(int id)
-        {
-            return _dbcontext.Contato.FirstOrDefault(o=>o.Id==id);
-        }
+       
+
+        
     }
 }

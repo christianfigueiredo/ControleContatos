@@ -8,6 +8,8 @@ namespace ControleContatos.Repositorio
         Contato ListarPorId(int id);
          List<Contato> BuscarTodos();
          Contato Adicionar(Contato contato);
+
+         Contato Atualizar(Contato contato);
          
 
     }
